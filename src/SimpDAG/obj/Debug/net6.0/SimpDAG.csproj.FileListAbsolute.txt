@@ -1,0 +1,12 @@
+D:\dotnet\Projects\SimpDAG\src\SimpDAG\bin\Debug\net6.0\SimpDAG.deps.json
+D:\dotnet\Projects\SimpDAG\src\SimpDAG\bin\Debug\net6.0\SimpDAG.dll
+D:\dotnet\Projects\SimpDAG\src\SimpDAG\bin\Debug\net6.0\SimpDAG.pdb
+D:\dotnet\Projects\SimpDAG\src\SimpDAG\obj\Debug\net6.0\SimpDAG.csproj.AssemblyReference.cache
+D:\dotnet\Projects\SimpDAG\src\SimpDAG\obj\Debug\net6.0\SimpDAG.GeneratedMSBuildEditorConfig.editorconfig
+D:\dotnet\Projects\SimpDAG\src\SimpDAG\obj\Debug\net6.0\SimpDAG.AssemblyInfoInputs.cache
+D:\dotnet\Projects\SimpDAG\src\SimpDAG\obj\Debug\net6.0\SimpDAG.AssemblyInfo.cs
+D:\dotnet\Projects\SimpDAG\src\SimpDAG\obj\Debug\net6.0\SimpDAG.csproj.CoreCompileInputs.cache
+D:\dotnet\Projects\SimpDAG\src\SimpDAG\obj\Debug\net6.0\SimpDAG.dll
+D:\dotnet\Projects\SimpDAG\src\SimpDAG\obj\Debug\net6.0\refint\SimpDAG.dll
+D:\dotnet\Projects\SimpDAG\src\SimpDAG\obj\Debug\net6.0\SimpDAG.pdb
+D:\dotnet\Projects\SimpDAG\src\SimpDAG\obj\Debug\net6.0\ref\SimpDAG.dll
