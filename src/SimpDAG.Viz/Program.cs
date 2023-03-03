@@ -7,10 +7,11 @@ using SimpDAG;
 
 
 var basicGraph =
-	"a1, a2, a3, a4\n" +
-	"b1, b2, b3, b4, b5\n" +
-	"c1, c2, b3\n" +
-	"d1, d2, d3, c1, a2\n";
+	"a1 -> a2 -> a3 -> a4\n" +
+	"b1 -> b2 -> b3 -> b4 -> b5\n" +
+	"c1 -> c2 -> b3\n" +
+	"d1 -> d2 -> d3 -> c1 -> a2\n" + 
+	"a3 -> e1";
 
 using var stream = new StringReader(basicGraph);
 var graph = GraphReader.Read(stream);

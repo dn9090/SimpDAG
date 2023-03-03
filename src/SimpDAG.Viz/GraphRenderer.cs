@@ -93,7 +93,7 @@ namespace SimpDAG
 					grid.Insert(x, y, vertices[v]);
 				}
 
-				var col = x;
+				var col = x + 1;
 				var count = graph.GetOutgoingEdges(vertices[v], edges);
 
 				for(int e = 0; e < count; ++e)
@@ -101,7 +101,7 @@ namespace SimpDAG
 					if(grid.Contains(edges[e].to))
 						continue;
 
-					var targetX = ++col;
+					var targetX = col;
 					var targetY = y;
 
 					if(grid.HasVertex(targetX, targetY))

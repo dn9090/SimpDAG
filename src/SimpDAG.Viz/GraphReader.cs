@@ -16,10 +16,15 @@ namespace SimpDAG
 
 			while((line = reader.ReadLine()) != null)
 			{
-				var vertices = line.Split(',');
+				var vertices = line.Split("->");
 
 				for(int i = 0; i < vertices.Length; ++i)
 				{
+					vertices[i] = vertices[i].Trim();
+
+					if(vertices[i].Length == 0)
+						continue;
+
 					if(!map.TryGetValue(vertices[i], out var vertex))
 					{
 						vertex = graph.AddVertex(vertices[i]);
