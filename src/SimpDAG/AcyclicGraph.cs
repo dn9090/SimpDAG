@@ -92,7 +92,7 @@ namespace SimpDAG
 			return fComp == 0 ? tComp : fComp;
 		}
 	}
-
+	
 	internal enum Marker : byte
 	{
 		None,
@@ -174,6 +174,20 @@ namespace SimpDAG
 			return new Edge(index, from, to);
 		}
 
+		public Edge GetEdge(int index)
+		{
+			if((uint)index >= (uint)edgeCount)
+				throw new ArgumentOutOfRangeException(nameof(index));
+
+			return new Edge(index, this.edges[index].from, this.edges[index].to);
+		}
+
+		public void GetEdges(Span<Edge> edges)
+		{
+			for(int i = 0; i < edgeCount; ++i)
+				edges[i] = new Edge(i, this.edges[i].from, this.edges[i].to);
+		}
+
 		public int GetInDegree(Vertex vertex)
 		{
 			return this.vertices[vertex.index].incoming;
@@ -248,6 +262,53 @@ namespace SimpDAG
 			markers[vertex.index] = Marker.Permanent;
 			vertices[index++] = vertex;
 
+			return true;
+		}
+
+		public bool TopologicalSort2(Span<Vertex> vertices)
+		{
+			if(this.vertexCount < vertices.Length)
+				throw new ArgumentOutOfRangeException(nameof(vertices));
+			
+			var markers = new Marker[this.vertexCount];
+			var index   = 0;
+
+			var stack = new Stack<Vertex>();
+
+			for(int i = 0; i < this.vertexCount; ++i)
+			{
+				if(markers[i] != Marker.None)
+					continue;
+
+				stack.Push(new Vertex(i));
+
+				while(stack.Count > 0)
+				{
+					var vertex = stack.Peek();
+
+					if(markers[vertex.index] == Marker.None)
+					{
+						markers[vertex.index] = Marker.Temporary;
+					} else {
+						markers[vertex.index] = Marker.Permanent;
+						vertices[index++] = stack.Pop();
+					}
+					
+					var directedEdges = GetOutgoingEdges(vertex);
+
+					for(int j = directedEdges.Length - 1; j >= 0; --j)
+					{
+						var neighbor = this.edges[directedEdges[j].index].to;
+
+						if(markers[neighbor.index] == Marker.Temporary)
+							return false;
+						
+						if(markers[neighbor.index] == Marker.None)
+							stack.Push(neighbor);
+					}
+				}
+			}
+			
 			return true;
 		}
 	}

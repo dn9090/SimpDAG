@@ -135,6 +135,48 @@ namespace SimpDAG.Tests
 
 			Assert.False(graph.TopologicalSort(vertices));
 		}
+
+		[Fact]
+		public void LinearIsSortable2()
+		{
+			var graph = new AcyclicGraph<int, int>();
+
+			var v0 = graph.AddVertex();
+			var v1 = graph.AddVertex();
+			var v2 = graph.AddVertex();
+			var v3 = graph.AddVertex();
+			
+			graph.AddEdge(v0, v1);
+			graph.AddEdge(v1, v2);
+			graph.AddEdge(v2, v3);
+
+			var vertices = new Vertex[graph.vertexCount];
+
+			Assert.True(graph.TopologicalSort2(vertices));
+			
+			Assert.Equal(vertices[3], v0);
+			Assert.Equal(vertices[2], v1);
+			Assert.Equal(vertices[1], v2);
+			Assert.Equal(vertices[0], v3);
+		}
+
+		[Fact]
+		public void CycleIsNotSortable2()
+		{
+			var graph = new AcyclicGraph<int, int>();
+
+			var v0 = graph.AddVertex();
+			var v1 = graph.AddVertex();
+			var v2 = graph.AddVertex();
+			
+			graph.AddEdge(v0, v1);
+			graph.AddEdge(v1, v2);
+			graph.AddEdge(v2, v0);
+
+			var vertices = new Vertex[graph.vertexCount];
+
+			Assert.False(graph.TopologicalSort2(vertices));
+		}
 	}
 }
 
